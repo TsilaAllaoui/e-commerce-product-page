@@ -1,0 +1,17 @@
+#mini-preview {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  width: 55%;
+
+  .thumbnail {
+    height: 5rem;
+    width: 5rem;
+    background-size: contain;
+    border-radius: 0.6rem;
+    background-repeat: no-repeat;
+    border: solid 2px transparent;
+    cursor: pointer;
+  }
+}

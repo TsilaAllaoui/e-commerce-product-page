@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "DM Sans";
+  src: url("../fonts/DMSans-VariableFont.ttf");
+}
+
+#root {
+  background-color: white;
+  width: 100vw;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+* {
+  font-family: "DM Sans";
+}

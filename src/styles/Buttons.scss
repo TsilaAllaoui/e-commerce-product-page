@@ -1,0 +1,61 @@
+#interactions {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  #buttons {
+    display: flex;
+    width: 10rem;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.183);
+    border-radius: 0.5rem;
+    user-select: none;
+    gap: 1rem;
+
+    #minus,
+    #plus {
+      padding: 0.5rem;
+      font-weight: 900;
+      cursor: pointer;
+      color: rgb(255, 89, 0);
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    p {
+      font-weight: 900;
+      font-size: 1.25rem;
+    }
+  }
+
+  #add-to-cart {
+    display: flex;
+    min-width: 15rem;
+    height: 3rem;
+    color: white;
+    border-radius: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    user-select: none;
+    background-color: rgb(255, 89, 0);
+
+    #icon {
+      font-weight: 900;
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-weight: 900;
+    }
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}
