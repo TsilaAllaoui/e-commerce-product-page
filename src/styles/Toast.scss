@@ -34,6 +34,12 @@
   opacity: 0;
   gap: 1rem;
 
+  @media (max-width: 416px) {
+    gap: 0;
+    height: 3rem;
+    margin-bottom: 1rem;
+  }
+
   #icon {
     font-size: 2rem;
   }

@@ -2,20 +2,22 @@
   margin: 0;
   padding: 0;
   background-color: white;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 #app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   gap: 3rem;
   position: relative;
 
   @media (max-width: 416px) {
     gap: 0;
+    overflow: auto;
+    box-sizing: border-box;
   }
 }

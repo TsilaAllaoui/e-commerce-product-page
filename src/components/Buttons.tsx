@@ -26,6 +26,7 @@ export const Buttons = () => {
     setCount(0);
 
     const toast = document.querySelector("#toast") as HTMLDivElement;
+    toast.scrollIntoView({ behavior: "smooth" });
     toast.style.animation = "slide 1500ms ease-in-out";
     setTimeout(() => {
       toast.style.animation = "unset";

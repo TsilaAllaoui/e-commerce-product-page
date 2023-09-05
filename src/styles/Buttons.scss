@@ -4,6 +4,15 @@
   gap: 1rem;
   margin-top: 2rem;
 
+  @media (max-width: 416px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0;
+    width: 100%;
+    margin: 1.5rem auto;
+    margin-bottom: 0;
+  }
+
   #buttons {
     display: flex;
     width: 10rem;
@@ -13,6 +22,11 @@
     border-radius: 0.5rem;
     user-select: none;
     gap: 1rem;
+
+    @media (max-width: 416px) {
+      width: 100%;
+      height: 3.5rem;
+    }
 
     #minus,
     #plus {
@@ -44,6 +58,11 @@
     cursor: pointer;
     user-select: none;
     background-color: rgb(255, 89, 0);
+
+    @media (max-width: 416px) {
+      width: 100%;
+      height: 3.5rem;
+    }
 
     #icon {
       font-weight: 900;
