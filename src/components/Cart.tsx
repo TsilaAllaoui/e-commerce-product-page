@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { CartStateContext } from "../contexts/cart";
 import { CurrentProductContext } from "../contexts/product";
 import "../styles/Cart.scss";
-import { CartStateContext } from "../contexts/cart";
-import { RiDeleteBin6Line } from "react-icons/ri";
 
 export const Cart = () => {
   const { product, setProduct } = useContext(CurrentProductContext);
