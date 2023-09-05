@@ -75,7 +75,7 @@ const Navbar = ({ currentUser }: { currentUser: User | null | undefined }) => {
         </div>
       </div>
       <div />
-      {window.innerWidth <= 416 ? <div id="separator"></div> : null}
+      {window.innerWidth > 416 ? <div id="separator"></div> : null}
     </div>
   );
 };

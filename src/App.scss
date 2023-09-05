@@ -14,4 +14,8 @@
   overflow: hidden;
   gap: 3rem;
   position: relative;
+
+  @media (max-width: 416px) {
+    gap: 0;
+  }
 }

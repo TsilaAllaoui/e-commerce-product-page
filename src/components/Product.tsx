@@ -6,6 +6,7 @@ import { Product } from "../interfaces/product";
 import React, { useContext, useRef, useState } from "react";
 import { CurrentProductContext } from "../contexts/product";
 import { PreviewContext } from "../interfaces/preview";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 
 const ProductPage = () => {
   const [preview, setPreview] = useState(0);
@@ -21,18 +22,57 @@ const ProductPage = () => {
     setPreviewState(true);
   };
 
+  const handlePrev = () => {
+    if (preview > 0) {
+      previewRef.current!.style.opacity = "0";
+      setTimeout(() => {
+        previewRef.current!.style.opacity = "1";
+        setPreview((preview) => preview - 1);
+      }, 300);
+    }
+  };
+
+  const handleNext = () => {
+    if (preview < 3) {
+      previewRef.current!.style.opacity = "0";
+      setTimeout(() => {
+        previewRef.current!.style.opacity = "1";
+        setPreview((preview) => preview + 1);
+      }, 300);
+    }
+  };
+
   return (
     <div id="product">
       <div id="left">
-        <div
-          id="preview"
-          style={{
-            backgroundImage: `url(/${product.images.split(";")[preview]})`,
-          }}
-          onClick={handlePreview}
-          ref={previewRef}
-        ></div>
-        <Thumbnails setPreview={setPreview} previewRef={previewRef} />
+        {window.innerWidth > 416 ? (
+          <>
+            <div
+              id="preview"
+              style={{
+                backgroundImage: `url(/${product.images.split(";")[preview]})`,
+              }}
+              onClick={handlePreview}
+              ref={previewRef}
+            ></div>
+            <Thumbnails setPreview={setPreview} previewRef={previewRef} />
+          </>
+        ) : (
+          <div
+            id="preview-mobile"
+            ref={previewRef}
+            style={{
+              backgroundImage: `url(/${product.images.split(";")[preview]})`,
+            }}
+          >
+            <div onClick={handlePrev}>
+              <GrFormPrevious id="prev" />
+            </div>
+            <div onClick={handleNext}>
+              <GrFormNext id="next" />
+            </div>
+          </div>
+        )}
       </div>
       <div id="right">
         <Vendor />
