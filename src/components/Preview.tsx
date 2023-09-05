@@ -4,7 +4,6 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { CurrentProductContext } from "../contexts/product";
 import { PreviewContext } from "../interfaces/preview";
 import "../styles/Preview.scss";
-import CurrentThumbnailProvider from "./Provider/CurrentThumbnailProvider";
 import { ThumbnailsAlt } from "./Thumbnails";
 import { CurrentThumbnailContext } from "../contexts/thumbnail";
 

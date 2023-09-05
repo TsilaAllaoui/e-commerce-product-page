@@ -21,7 +21,7 @@ const Navbar = ({ currentUser }: { currentUser: User | null | undefined }) => {
 
   const paths = ["Collections", "Men", "Women", "About", "Contact"];
 
-  const handleMenu = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMenu = (_e: React.MouseEvent<HTMLDivElement>) => {
     setIsMenuOpen(!isMenuOpen);
 
     if (isMenuOpen) {

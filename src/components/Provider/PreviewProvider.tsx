@@ -1,5 +1,5 @@
-import { Children, useState } from "react";
-import { PreviewContext, PreviewState } from "../../interfaces/preview";
+import { useState } from "react";
+import { PreviewContext } from "../../interfaces/preview";
 
 const PreviewProvider = ({ children }: { children: any }) => {
   const [previewState, setPreviewState] = useState<boolean>(false);
