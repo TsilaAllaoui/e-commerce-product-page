@@ -1,5 +1,4 @@
 import { usePalette } from "react-palette";
-import { Product } from "../interfaces/product";
 import { useContext } from "react";
 import { CurrentProductContext } from "../contexts/product";
 
