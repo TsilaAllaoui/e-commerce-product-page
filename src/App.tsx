@@ -9,6 +9,7 @@ import { CurrentProductContextProvider } from "./components/Provider/CurrentProd
 import PreviewProvider from "./components/Provider/PreviewProvider";
 import { CartState, CartStateContext } from "./contexts/cart";
 import { User } from "./interfaces/user";
+import CurrentThumbnailProvider from "./components/Provider/CurrentThumbnailProvider";
 
 function App() {
   const currentUser: User = {
@@ -22,8 +23,6 @@ function App() {
     const listener = () => {
       document.body.addEventListener("click", (e) => {
         const cart = document.querySelector("#cart-portal") as HTMLDivElement;
-        console.log(cart);
-        console.log(e.currentTarget);
         if (cartState && e.currentTarget != cart) {
           setCartState(false);
         }
@@ -42,11 +41,13 @@ function App() {
       <CurrentProductContextProvider>
         <CartStateProvider>
           <PreviewProvider>
-            <div id="app">
-              <Navbar currentUser={currentUser} />
-              <ProductPage />
-              <Preview />
-            </div>
+            <CurrentThumbnailProvider>
+              <div id="app">
+                <Navbar currentUser={currentUser} />
+                <ProductPage />
+                <Preview />
+              </div>
+            </CurrentThumbnailProvider>
           </PreviewProvider>
         </CartStateProvider>
       </CurrentProductContextProvider>

@@ -6,7 +6,7 @@ import { CartStateContext } from "../contexts/cart";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 export const Cart = () => {
-  const product = useContext(CurrentProductContext).product;
+  const { product, setProduct } = useContext(CurrentProductContext);
   const { cartState, setCartState } = useContext(CartStateContext);
   const handleClick = (_e: React.MouseEvent<HTMLDivElement>) => {
     setCartState(true);
@@ -15,6 +15,13 @@ export const Cart = () => {
   const price =
     product.price! -
     (product.discount ? (product.price! * product.discount) / 100 : 0);
+
+  const handleDelete = () => {
+    setProduct({
+      ...product,
+      count: 0,
+    });
+  };
 
   return (
     <>
@@ -36,7 +43,9 @@ export const Cart = () => {
                         <p>{`$${product.count * price}`}</p>
                       </div>
                     </div>
-                    <RiDeleteBin6Line id="icon" />
+                    <div onClick={handleDelete}>
+                      <RiDeleteBin6Line id="icon" />
+                    </div>
                   </div>
                   <div id="checkout">Checkout</div>
                 </>

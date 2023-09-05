@@ -14,5 +14,15 @@
     background-repeat: no-repeat;
     border: solid 2px transparent;
     cursor: pointer;
+
+    #filter {
+      position: absolute;
+      top: 0;
+      height: 5rem;
+      width: 5rem;
+      border-radius: 0.6rem;
+      background-color: white;
+      opacity: 0.5;
+    }
   }
 }

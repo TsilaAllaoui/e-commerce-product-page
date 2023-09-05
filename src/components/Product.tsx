@@ -8,12 +8,16 @@ import { CurrentProductContext } from "../contexts/product";
 import { PreviewContext } from "../interfaces/preview";
 
 const ProductPage = () => {
-  const [preview, setPreview] = useState("images/image-product-1.jpg");
+  const [preview, setPreview] = useState(0);
   const product: Product = useContext(CurrentProductContext).product;
-  const { previewState, setPreviewState } = useContext(PreviewContext);
+  const setPreviewState = useContext(PreviewContext).setPreviewState;
   const previewRef = useRef<HTMLDivElement>(null);
 
   const handlePreview = (_e: React.MouseEvent<HTMLDivElement>) => {
+    const previewElement = document.querySelector(
+      "#preview-container"
+    ) as HTMLDivElement;
+    previewElement.style.zIndex = "5";
     setPreviewState(true);
   };
 
@@ -22,7 +26,9 @@ const ProductPage = () => {
       <div id="left">
         <div
           id="preview"
-          style={{ backgroundImage: `url(/${preview})` }}
+          style={{
+            backgroundImage: `url(/${product.images.split(";")[preview]})`,
+          }}
           onClick={handlePreview}
           ref={previewRef}
         ></div>

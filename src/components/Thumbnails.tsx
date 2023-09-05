@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../styles/Thumbnails.scss";
 import { CurrentProductContext } from "../contexts/product";
+import { CurrentThumbnailContext } from "../contexts/thumbnail";
 
 export const Thumbnails = ({
   setPreview,
   previewRef,
 }: {
-  setPreview: (s: string) => void;
+  setPreview: (i: number) => void;
   previewRef: React.RefObject<HTMLDivElement>;
 }) => {
   const [currIndex, setCurrIndex] = useState(0);
@@ -15,7 +16,7 @@ export const Thumbnails = ({
     previewRef.current!.style.opacity = "0";
     setTimeout(() => {
       previewRef.current!.style.opacity = "1";
-      setPreview(product.images.split(";")[index]);
+      setPreview(index);
       setCurrIndex(index);
     }, 300);
   };
@@ -23,9 +24,8 @@ export const Thumbnails = ({
   return (
     <div id="mini-preview">
       {[0, 1, 2, 3].map((i) => (
-        <>
+        <div key={i + 5 + product.images.split(";")[i]}>
           <div
-            key={i}
             className="thumbnail"
             style={{
               backgroundImage: `url(/${product.images.split(";")[i]})`,
@@ -36,7 +36,53 @@ export const Thumbnails = ({
           >
             {currIndex == i ? <div id="filter"></div> : null}
           </div>
-        </>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export const ThumbnailsAlt = ({
+  setPreview,
+  previewRef,
+}: {
+  setPreview: (i: number) => void;
+  previewRef: React.RefObject<HTMLDivElement>;
+}) => {
+  const { currentThumbnail, setCurrentThumbnail } = useContext(
+    CurrentThumbnailContext
+  );
+  const product = useContext(CurrentProductContext).product;
+  const handleClick = (_e: React.MouseEvent<HTMLDivElement>, index: number) => {
+    previewRef.current!.style.opacity = "0";
+    setTimeout(() => {
+      previewRef.current!.style.opacity = "1";
+      setPreview(index);
+      setCurrentThumbnail(index);
+    }, 300);
+  };
+
+  useEffect(() => {
+    console.log(currentThumbnail);
+  }, [currentThumbnail]);
+
+  return (
+    <div id="mini-preview">
+      {[0, 1, 2, 3].map((i) => (
+        <div key={i + product.images.split(";")[i]}>
+          <div
+            className="thumbnail"
+            style={{
+              backgroundImage: `url(/${product.images.split(";")[i]})`,
+              border:
+                "solid 2px " +
+                (i == currentThumbnail ? "orange" : "transparent"),
+            }}
+            onClick={(e) => handleClick(e, i)}
+          >
+            {currentThumbnail == i ? <div id="filter"></div> : null}
+          </div>
+        </div>
       ))}
     </div>
   );

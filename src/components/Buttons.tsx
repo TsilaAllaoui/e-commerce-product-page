@@ -18,6 +18,7 @@ export const Buttons = () => {
   };
 
   const handleCartAdd = async (_e: React.MouseEvent<HTMLDivElement>) => {
+    if (count == 0) return;
     productCtx.setProduct({
       ...productCtx.product,
       count: count,
