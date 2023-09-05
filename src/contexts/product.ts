@@ -1,9 +1,9 @@
-import { createContext, useContext, useState } from "react";
+import { createContext } from "react";
 import { Product } from "../interfaces/product";
 
 interface ProductCtxType {
-  product: Product;
-  setProduct: (p: Product) => void;
+  product: Product & { count: number };
+  setProduct: (p: Product & { count: number }) => void;
 }
 
 export const CurrentProductContext = createContext<ProductCtxType>({
@@ -15,6 +15,7 @@ export const CurrentProductContext = createContext<ProductCtxType>({
     discount: 50,
     images:
       "images/image-product-1.jpg;images/image-product-2.jpg;images/image-product-3.jpg;images/image-product-4.jpg",
+    count: 0,
   },
-  setProduct: (_p: Product) => {},
+  setProduct: (_p: Product & { count: number }) => {},
 });

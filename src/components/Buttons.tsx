@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { ImMinus, ImPlus } from "react-icons/im";
 import "../styles/Buttons.scss";
 import { Toast } from "./Toast";
+import { CurrentProductContext } from "../contexts/product";
 
 export const Buttons = () => {
   const [count, setCount] = useState(0);
+  const productCtx = useContext(CurrentProductContext);
 
   const add = (_e: React.MouseEvent<HTMLDivElement>) => {
     setCount(count + 1);
@@ -16,6 +18,10 @@ export const Buttons = () => {
   };
 
   const handleCartAdd = async (_e: React.MouseEvent<HTMLDivElement>) => {
+    productCtx.setProduct({
+      ...productCtx.product,
+      count: count,
+    });
     setCount(0);
 
     const toast = document.querySelector("#toast") as HTMLDivElement;
